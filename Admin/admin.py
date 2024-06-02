@@ -16,12 +16,28 @@ BUCKET_NAME = os.getenv("BUCKET_NAME")
 def get_unique_id():
     return str(uuid.uuid4())
 
+## Bedrock client
+bedrock_client = boto3.client(service_name="bedrock-runtime")
+bedrock_embeddings = BedrockEmbeddings(model_id="amazon.titan-text-express-v1", client=bedrock_client)
+
 ## Split the pages / text into chunks
 def split_text(pages, chunk_size, chunk_overlap):
     text_splitter = RecursiveCharacterTextSplitter(chunk_size=chunk_size, chunk_overlap=chunk_overlap)
     docs = text_splitter.split_documents(pages)
     return docs
 
+## create vector store
+def create_vector_store(request_id, documents):
+    vectorstore_faiss=FAISS.from_documents(documents, bedrock_embeddings)
+    file_name=f"{request_id}.bin"
+    folder_path="/tmp/"
+    vectorstore_faiss.save_local(index_name=file_name, folder_path=folder_path)
+
+    ## upload to S3
+    s3_client.upload_file(Filename=folder_path + "/" + file_name + ".faiss", Bucket=BUCKET_NAME, Key="my_faiss.faiss")
+    s3_client.upload_file(Filename=folder_path + "/" + file_name + ".pkl", Bucket=BUCKET_NAME, Key="my_faiss.pkl")
+
+    return True
 
 # Main Function for Streamlit Application
 ## main method
@@ -47,6 +63,14 @@ def main():
         st.write(splitted_docs[0])
         st.write("===================")
         st.write(splitted_docs[1])
+
+        st.write("Creating the Vector Store")
+        result = create_vector_store(request_id, splitted_docs)
+
+        if result:
+            st.write("Hurray!! PDF processed successfully")
+        else:
+            st.write("Error!! Please check logs.")
 
 
 
