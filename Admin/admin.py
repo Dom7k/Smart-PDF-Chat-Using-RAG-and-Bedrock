@@ -16,6 +16,13 @@ BUCKET_NAME = os.getenv("BUCKET_NAME")
 def get_unique_id():
     return str(uuid.uuid4())
 
+## Split the pages / text into chunks
+def split_text(pages, chunk_size, chunk_overlap):
+    text_splitter = RecursiveCharacterTextSplitter(chunk_size=chunk_size, chunk_overlap=chunk_overlap)
+    docs = text_splitter.split_documents(pages)
+    return docs
+
+
 # Main Function for Streamlit Application
 ## main method
 def main():
