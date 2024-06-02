@@ -12,13 +12,13 @@ import uuid
 s3_client = boto3.client("s3")
 BUCKET_NAME = os.getenv("BUCKET_NAME")
 
+## Bedrock client
+bedrock_client = boto3.client(service_name="bedrock-runtime")
+bedrock_embeddings = BedrockEmbeddings(model_id="amazon.titan-embed-text-v1", client=bedrock_client)
+
 # Define Helper Functions
 def get_unique_id():
     return str(uuid.uuid4())
-
-## Bedrock client
-bedrock_client = boto3.client(service_name="bedrock-runtime")
-bedrock_embeddings = BedrockEmbeddings(model_id="amazon.titan-text-express-v1", client=bedrock_client)
 
 ## Split the pages / text into chunks
 def split_text(pages, chunk_size, chunk_overlap):
