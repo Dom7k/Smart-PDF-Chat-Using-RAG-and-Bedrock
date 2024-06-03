@@ -3,8 +3,9 @@ from langchain_community.embeddings import BedrockEmbeddings ## Bedrock
 from langchain.text_splitter import RecursiveCharacterTextSplitter ## Text Splitter
 from langchain_community.document_loaders import PyPDFLoader ## Pdf Loader
 from langchain_community.vectorstores import FAISS ## import FAISS
-from langchain.llms.bedrock import Bedrock
-from langchain.chains import RetrievalQA
+from langchain.llms.bedrock import Bedrock ## Bedrock
+from langchain.chains import RetrievalQA ## chain
+from langchain.prompts import PromptTemplate ## prompt
 import streamlit as st
 import os
 import uuid
