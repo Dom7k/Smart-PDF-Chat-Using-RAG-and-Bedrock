@@ -14,7 +14,11 @@ BUCKET_NAME = os.getenv("BUCKET_NAME")
 ## Bedrock client
 bedrock_client = boto3.client(service_name="bedrock-runtime")
 bedrock_embeddings = BedrockEmbeddings(model_id="amazon.titan-embed-text-v1", client=bedrock_client)
-   
+
+# Define Helper Functions
+def get_unique_id():
+    return str(uuid.uuid4())
+  
 # Main Function for Streamlit Application
 ## main method
 def main():
