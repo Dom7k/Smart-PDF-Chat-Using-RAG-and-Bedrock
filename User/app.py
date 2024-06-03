@@ -28,6 +28,12 @@ def load_index():
     s3_client.download_file(Bucket=BUCKET_NAME, Key="my_faiss.faiss", Filename=f"{folder_path}my_faiss.faiss")
     s3_client.download_file(Bucket=BUCKET_NAME, Key="my_faiss.pkl", Filename=f"{folder_path}my_faiss.pkl")
 
+# Get Bedrock LLM
+def get_llm():
+    llm = Bedrock(model_id="anthropic.claude-v2:1", client=bedrock_client,
+                  model_kwargs={'max_tokens_to_sample': 512})
+    return llm
+
 # Main Function for Streamlit Application
 ## main method
 def main():
