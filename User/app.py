@@ -18,7 +18,14 @@ bedrock_embeddings = BedrockEmbeddings(model_id="amazon.titan-embed-text-v1", cl
 # Define Helper Functions
 def get_unique_id():
     return str(uuid.uuid4())
-  
+
+folder_path = "/tmp/"
+
+## load index
+def load_index():
+    s3_client.download_file(Bucket=BUCKET_NAME, Key="my_faiss.faiss", Filename=f"{folder_path}my_faiss.faiss")
+    s3_client.download_file(Bucket=BUCKET_NAME, Key="my_faiss.pkl", Filename=f"{folder_path}my_faiss.pkl")
+
 # Main Function for Streamlit Application
 ## main method
 def main():
