@@ -69,7 +69,7 @@ def get_response(llm,vectorstore, question ):
 # Main Function for Streamlit Application
 ## main method
 def main():
-    st.header("This is Client Site for Chat with PDF demo using Bedrock, RAG etc")
+    st.header("Chat with Your PDF - Powered by RAG")
 
     load_index()
 
