@@ -1,6 +1,6 @@
-# AI Document Interaction Chatbot
+# Smart PDF Chat Using RAG and Amazon Bedrock
 
-This project is an AI chatbot that allows users to upload their documents and interact with them within the context of the document. The chatbot utilizes Amazon Bedrock, S3, FAISS, RAG, LangChain, and Streamlit to provide an efficient and user-friendly experience.
+This project is an AI chatbot that allows users to upload their documents and chat with the document, powered by RAG and Amazon Bedrock
 
 ### **Technologies Used**
 - Amazon Bedrock
