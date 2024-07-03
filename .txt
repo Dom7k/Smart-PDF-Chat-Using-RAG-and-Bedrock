@@ -1,15 +1,11 @@
-Buid admin image
-_________________________________
+## Buid admin image
 docker build -t pdf-reader-admin . 
 
-Buid client image
-_________________________________
+## Buid client image
 docker build -t pdf-reader-client . 
 
-Admin image
-_________________________________
+## Admin image
 docker run -d -e BUCKET_NAME=iobot-bedrock-chatbot-pdf -v ~/.aws:/root/.aws -p 8083:8083 -it  pdf-reader-admin
 
-client image
-_________________________________
+## client image
 docker run -d -e BUCKET_NAME=iobot-bedrock-chatbot-pdf -v ~/.aws:/root/.aws -p 8084:8084 -it  pdf-reader-client
