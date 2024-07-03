@@ -1,10 +1,19 @@
 # AI Document Interaction Chatbot
 
-This project is an AI chatbot that allows users to upload their own documents and interact with them within the context of the document. The chatbot utilizes Amazon Bedrock, S3, FAISS, RAG, LangChain, and Streamlit to provide an efficient and user-friendly experience.
+This project is an AI chatbot that allows users to upload their documents and interact with them within the context of the document. The chatbot utilizes Amazon Bedrock, S3, FAISS, RAG, LangChain, and Streamlit to provide an efficient and user-friendly experience.
+
+### **Technologies Used**
+- Amazon Bedrock
+- Amazon S3
+- FAISS
+- RAG
+- LangChain
+- Streamlit
+- Docker
 
 ## Architecture
 
-![Architecture Diagram](path_to_architecture_diagram.png)
+![Architecture Diagram](https://github.com/Dom7k/Smart-PDF-Chat-Using-RAG-and-Bedrock/blob/main/images/Architecture%20diagram.gif)
 
 1. **Document Chunking**: The uploaded document is broken up into manageable chunks of text.
 2. **Vector Embedding**: Each chunk is converted to FAISS vectors using Amazon Titan Embeddings.
@@ -27,8 +36,9 @@ This project is an AI chatbot that allows users to upload their own documents an
    - Go to the [AWS Management Console](https://aws.amazon.com/console/).
    - Navigate to the S3 service.
    - Click on "Create bucket".
-   - Name the bucket `bedrock-chatbot-pdf` and configure any other settings as needed.
+   - Name the bucket `bedrock-chatbot-pdf` and leave everything else default.
    - Click "Create bucket".
+   - create a folder inside your bucket `bedrock-chatbot-pdf` and name it `my_faiss`
 
 2. **Generate an IAM Access Key**:
    - Go to the IAM service in the AWS Management Console.
@@ -54,7 +64,7 @@ This project is an AI chatbot that allows users to upload their own documents an
 aws configure
  ```
 
-### Enter your AWS credentials
+### **Enter your AWS credentials**
 
 - AWS Access Key ID: YOUR_ACCESS_KEY_ID
 - AWS Secret Access Key: YOUR_SECRET_ACCESS_KEY
@@ -100,12 +110,13 @@ docker build -t pdf-reader-client .
 docker run -d -e BUCKET_NAME=bedrock-chatbot-pdf -v ~/.aws:/root/.aws -p 8084:8084 -it pdf-reader-client
 ```
 
+## Screenshots
 
-### **Technologies Used**
-- Amazon Bedrock
-- Amazon S3
-- FAISS
-- RAG
-- LangChain
-- Streamlit
-- Docker
+### Admin page / Upload document
+![Architecture Diagram](https://github.com/Dom7k/Smart-PDF-Chat-Using-RAG-and-Bedrock/blob/main/images/upload.png)
+
+### User page / Chat with document
+![Architecture Diagram](https://github.com/Dom7k/Smart-PDF-Chat-Using-RAG-and-Bedrock/blob/main/images/chat.png)
+
+### When you ask any question out of context, you do not get any answer
+![Architecture Diagram](https://github.com/Dom7k/Smart-PDF-Chat-Using-RAG-and-Bedrock/blob/main/images/chat2.png)
