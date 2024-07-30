@@ -13,7 +13,7 @@ This project is an AI chatbot that allows users to upload their documents and ch
 
 ## Architecture
 
-![Architecture Diagram](https://github.com/Dom7k/Smart-PDF-Chat-Using-RAG-and-Bedrock/blob/main/images/Architecture%20diagram.gif)
+![Architecture Diagram](https://github.com/dominicnaatey/Smart-PDF-Chat-Using-RAG-and-Bedrock/blob/main/images/Architecture%20diagram.gif)
 
 1. **Document Chunking**: The uploaded document is broken up into manageable chunks of text.
 2. **Vector Embedding**: Each chunk is converted to FAISS vectors using Amazon Titan Embeddings.
@@ -76,7 +76,8 @@ aws configure
 ### Backend
 1. **Clone the repository**
 ```bash
-git clone https://github.com/Dom7k/Smart-PDF-Chat-Using-RAG-and-Bedrock.git
+git clone https://github.com/dominicnaatey/Smart-PDF-Chat-Using-RAG-and-Bedrock.git
+cd Smart-PDF-Chat-Using-RAG-and-Bedrock
 ```
 
 2. **Navigate to the admin directory**
@@ -113,10 +114,10 @@ docker run -d -e BUCKET_NAME=bedrock-chatbot-pdf -v ~/.aws:/root/.aws -p 8084:80
 ## Screenshots
 
 ### Admin page / Upload document
-![Architecture Diagram](https://github.com/Dom7k/Smart-PDF-Chat-Using-RAG-and-Bedrock/blob/main/images/upload.png)
+![Architecture Diagram](https://github.com/dominicnaatey/Smart-PDF-Chat-Using-RAG-and-Bedrock/blob/main/images/upload.png)
 
 ### User page / Chat with document
-![Architecture Diagram](https://github.com/Dom7k/Smart-PDF-Chat-Using-RAG-and-Bedrock/blob/main/images/chat.png)
+![Architecture Diagram](https://github.com/dominicnaatey/Smart-PDF-Chat-Using-RAG-and-Bedrock/blob/main/images/chat.png)
 
 ### When you ask any question out of context, you do not get any answer
-![Architecture Diagram](https://github.com/Dom7k/Smart-PDF-Chat-Using-RAG-and-Bedrock/blob/main/images/chat2.png)
+![Architecture Diagram](https://github.com/dominicnaatey/Smart-PDF-Chat-Using-RAG-and-Bedrock/blob/main/images/chat2.png)
